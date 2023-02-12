@@ -1,7 +1,6 @@
 package com.example.cryptocron.service.impl;
 
 import com.example.cryptocron.model.CryptName;
-import com.example.cryptocron.model.dto.external.LastPriceDto;
 import com.example.cryptocron.service.CryptoReport;
 import com.example.cryptocron.service.CryptoService;
 import java.io.IOException;

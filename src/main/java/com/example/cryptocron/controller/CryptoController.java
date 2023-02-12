@@ -46,10 +46,12 @@ public class CryptoController {
         );
     }
 
-    @GetMapping( path = "/csv", produces = "text/csv")
-    public ResponseEntity<String> createCsv(HttpServletResponse servletResponse) throws IOException {
+    @GetMapping(path = "/csv", produces = "text/csv")
+    public ResponseEntity<String> createCsv(HttpServletResponse servletResponse)
+            throws IOException {
         servletResponse.setContentType("text/csv");
-        servletResponse.addHeader("Content-Disposition","attachment; filename=\"cryptocurrencies.csv\"");
+        servletResponse.addHeader("Content-Disposition",
+                "attachment; filename=\"cryptocurrencies.csv\"");
         report.exportReportToCsv(servletResponse.getWriter());
         return ResponseEntity.ok("Report created successes");
     }
