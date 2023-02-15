@@ -1,7 +1,7 @@
 package com.example.cryptocron.repository;
 
-import com.example.cryptocron.model.CryptName;
 import com.example.cryptocron.model.Crypto;
+import com.example.cryptocron.model.CryptoName;
 import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,9 +10,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CryptoRepository extends MongoRepository<Crypto, String> {
-    List<Crypto> findByCryptNameOrderByPriceDesc(CryptName cryptName);
+    List<Crypto> findByCryptoNameOrderByPriceDesc(CryptoName cryptoName);
 
-    List<Crypto> findByCryptNameOrderByPriceAsc(CryptName cryptName);
+    List<Crypto> findByCryptoNameOrderByPriceAsc(CryptoName cryptoName);
 
-    Page<Crypto> findAllByCryptName(CryptName cryptName, Pageable pageable);
+    Page<Crypto> findAllByCryptoName(CryptoName cryptoName, Pageable pageable);
 }

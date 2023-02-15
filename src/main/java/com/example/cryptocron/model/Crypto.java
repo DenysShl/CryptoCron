@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -17,17 +19,18 @@ import org.springframework.data.mongodb.core.mapping.Field;
 public class Crypto {
     @Id
     private String id;
-    //    @Indexed(unique = true)
+    @DBRef(db = "crypto_names", lazy = true)
+    @Indexed(unique = true)
     @Field(value = "name_crypto")
-    private CryptName cryptName;
+    private CryptoName cryptoName;
     private BigDecimal price;
     @Field(value = "date_created")
     private LocalDateTime dateCreated;
 
-    public Crypto(CryptName cryptName,
+    public Crypto(CryptoName cryptoName,
                   BigDecimal price,
                   LocalDateTime dateCreated) {
-        this.cryptName = cryptName;
+        this.cryptoName = cryptoName;
         this.price = price;
         this.dateCreated = dateCreated;
     }
@@ -46,7 +49,7 @@ public class Crypto {
         if (!Objects.equals(id, crypto.id)) {
             return false;
         }
-        if (!Objects.equals(cryptName, crypto.cryptName)) {
+        if (!Objects.equals(cryptoName, crypto.cryptoName)) {
             return false;
         }
         if (!Objects.equals(price, crypto.price)) {
@@ -59,7 +62,7 @@ public class Crypto {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (cryptName != null ? cryptName.hashCode() : 0);
+        result = 31 * result + (cryptoName != null ? cryptoName.hashCode() : 0);
         result = 31 * result + (price != null ? price.hashCode() : 0);
         result = 31 * result + (dateCreated != null ? dateCreated.hashCode() : 0);
         return result;
@@ -69,7 +72,7 @@ public class Crypto {
     public String toString() {
         return "Crypto{"
                 + "id=" + id
-                + ", name='" + cryptName + '\''
+                + ", name='" + cryptoName + '\''
                 + ", price=" + price
                 + ", dateCreated=" + dateCreated
                 + '}';

@@ -12,8 +12,8 @@ public class CryptoMapper implements MapperToDto<CryptoResponseDto, Crypto> {
     public CryptoResponseDto toDto(Crypto crypto) {
         return new CryptoResponseDto(
                 crypto.getId(),
-                crypto.getCryptName(),
-                crypto.getCryptName().getValue(),
+                crypto.getCryptoName(),
+                crypto.getCryptoName().getDescription(),
                 crypto.getPrice(),
                 crypto.getDateCreated()
         );

@@ -1,6 +1,6 @@
 package com.example.cryptocron.model.dto;
 
-import com.example.cryptocron.model.CryptName;
+import com.example.cryptocron.model.CryptoName;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
@@ -14,7 +14,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class CryptoResponseDto {
     private String id;
-    private CryptName cryptName;
+    private CryptoName cryptoName;
     private String fullName;
     private BigDecimal price;
     private LocalDateTime dateCreated;
