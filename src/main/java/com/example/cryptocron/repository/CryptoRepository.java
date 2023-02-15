@@ -10,9 +10,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CryptoRepository extends MongoRepository<Crypto, String> {
-    List<Crypto> findByCryptNameOrderByPriceDesc(String string);
+    List<Crypto> findByCryptNameOrderByPriceDesc(CryptName cryptName);
 
-    List<Crypto> findByCryptNameOrderByPriceAsc(String name);
+    List<Crypto> findByCryptNameOrderByPriceAsc(CryptName cryptName);
 
     Page<Crypto> findAllByCryptName(CryptName cryptName, Pageable pageable);
 }

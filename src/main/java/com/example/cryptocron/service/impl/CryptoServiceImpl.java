@@ -42,8 +42,9 @@ public class CryptoServiceImpl implements CryptoService {
     @Override
     public Crypto getByNameMinPrice(String name) {
         try {
-            return cryptoRepository.findByCryptNameOrderByPriceAsc(name).get(0);
-        } catch (Exception e) {
+            CryptName byName = CryptName.getByName(name);
+            return cryptoRepository.findByCryptNameOrderByPriceAsc(byName).get(0);
+        } catch (IllegalArgumentException | IndexOutOfBoundsException e) {
             throw new ResourceNotFoundException("Crypto", "Name", name);
         }
     }
@@ -51,8 +52,9 @@ public class CryptoServiceImpl implements CryptoService {
     @Override
     public Crypto getByNameMaxPrice(String name) {
         try {
-            return cryptoRepository.findByCryptNameOrderByPriceDesc(name).get(0);
-        } catch (Exception e) {
+            CryptName byName = CryptName.getByName(name);
+            return cryptoRepository.findByCryptNameOrderByPriceDesc(byName).get(0);
+        } catch (IllegalArgumentException | IndexOutOfBoundsException e) {
             throw new ResourceNotFoundException("Crypto", "Name", name);
         }
     }
